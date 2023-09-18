@@ -8,15 +8,17 @@ This markdown document outlines a command-line biological data analysis pipeline
 
 ```bash
 # Example command to download raw data using wget
+#Sample genome dataset for mus musculus: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000001635.27/
+#Sample genome dataset for homo sapiens: https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000001405.40/
 wget http://example.com/raw_data/file1.fastq.gz
 wget http://example.com/raw_data/file2.fastq.gz
-1.2. Quality Control: Check the quality of the raw data using FastQC.
 
+1.2. Quality Control: Check the quality of the raw data using FastQC.
 bash
 Copy code
 # Example command to run FastQC on a FASTQ file
-fastqc file1.fastq.gz
-fastqc file2.fastq.gz
+fastqc mus_musculus.fastq.gz
+fastqc homo_sapiens.fastq.gz
 Save to grepper
 Step 2: Data Preprocessing
 2.1. Adapter Trimming: Trim adapter sequences and low-quality bases using Cutadapt or Trimmomatic.
@@ -24,7 +26,7 @@ Step 2: Data Preprocessing
 bash
 Copy code
 # Example command using Cutadapt
-cutadapt -a ADAPTER_SEQUENCE -o trimmed_file1.fastq.gz file1.fastq.gz
+cutadapt -a ADAPTER_SEQUENCE -o trimmed_mus_musculus.fastq.gz file1.fastq.gz
 cutadapt -a ADAPTER_SEQUENCE -o trimmed_file2.fastq.gz file2.fastq.gz
 Save to grepper
 2.2. Quality Filtering: Remove low-quality reads and filter by read length.
@@ -32,10 +34,12 @@ Save to grepper
 bash
 Copy code
 # Example command using Trimmomatic
-trimmomatic SE -phred33 trimmed_file1.fastq.gz cleaned_file1.fastq.gz LEADING:20 TRAILING:20 MINLEN:50
+trimmomatic SE -phred33 trimmed_mus_musculus.fastq.gz cleaned_mus_musculus.fastq.gz LEADING:20 TRAILING:20 MINLEN:50
 trimmomatic SE -phred33 trimmed_file2.fastq.gz cleaned_file2.fastq.gz LEADING:20 TRAILING:20 MINLEN:50
 Save to grepper
+
 Step 3: Alignment and Mapping
+
 3.1. Reference Genome: Download or prepare a reference genome for alignment.
 
 bash
