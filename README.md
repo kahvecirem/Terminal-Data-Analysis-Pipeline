@@ -20,7 +20,8 @@ Copy code
 fastqc mus_musculus.fastq.gz
 fastqc homo_sapiens.fastq.gz
 Save to grepper
-Step 2: Data Preprocessing
+
+## Step 2: Data Preprocessing
 2.1. Adapter Trimming: Trim adapter sequences and low-quality bases using Cutadapt or Trimmomatic.
 
 bash
@@ -38,7 +39,7 @@ trimmomatic SE -phred33 trimmed_mus_musculus.fastq.gz cleaned_mus_musculus.fastq
 trimmomatic SE -phred33 trimmed_file2.fastq.gz cleaned_file2.fastq.gz LEADING:20 TRAILING:20 MINLEN:50
 Save to grepper
 
-Step 3: Alignment and Mapping
+## Step 3: Alignment and Mapping
 
 3.1. Reference Genome: Download or prepare a reference genome for alignment.
 
@@ -55,7 +56,7 @@ Copy code
 bowtie2 -x genome -U cleaned_file1.fastq.gz -S sample1.sam
 bowtie2 -x genome -U cleaned_file2.fastq.gz -S sample2.sam
 Save to grepper
-Step 4: Post-Processing and Analysis
+## Step 4: Post-Processing and Analysis
 4.1. Convert SAM to BAM: Convert SAM files to compressed BAM files.
 
 bash
@@ -82,7 +83,7 @@ Copy code
 gatk HaplotypeCaller -R genome.fa -I sample1_sorted.bam -O sample1_variants.vcf
 gatk HaplotypeCaller -R genome.fa -I sample2_sorted.bam -O sample2_variants.vcf
 Save to grepper
-Step 5: Data Visualization and Interpretation
+## Step 5: Data Visualization and Interpretation
 5.1. Generate Plots: Create plots and visualizations to analyze and interpret the data.
 
 bash
@@ -98,7 +99,7 @@ Copy code
 annotate_variation.pl -buildver hg19 -outfile annotated_variants sample1_variants.vcf genome.fa
 annotate_variation.pl -buildver hg19 -outfile annotated_variants sample2_variants.vcf genome.fa
 Save to grepper
-Step 6: Reporting
+## Step 6: Reporting
 6.1. Generate Reports: Compile the analysis results into a report or publication.
 
 bash
